@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Print alle ark: FP9 note-ark</title>
+<link rel="stylesheet" href="shared/tokens.css">
+<link rel="stylesheet" href="shared/sheet.css">
+<style>
+  body { background: var(--paper-tint-2); }
+  .print-bar {
+    background: var(--ink);
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .print-bar .brand { font-family: var(--font-display); font-style: italic; font-size: 13pt; }
+  .print-bar a,
+  .print-bar button {
+    color: white;
+    background: transparent;
+    text-decoration: none;
+    border: 0.5pt solid rgba(255,255,255,0.4);
+    padding: 6px 14px;
+    font: inherit;
+    font-size: 11pt;
+    cursor: pointer;
+  }
+  .print-bar a + button { margin-left: 8px; }
+  .hint {
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 11pt;
+    padding: 16px;
+    font-style: italic;
+  }
+  .loader-frame {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    border: 0;
+  }
+  @media print {
+    .print-bar, .hint, .loader-frame { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <span class="brand">FP9 note-ark · forside + 10 ark</span>
+  <span>
+    <a href="index.html">← Forside</a>
+    <button type="button" id="printBtn">Print alle</button>
+  </span>
+</div>
+
+<div class="hint no-print" id="status">Indlæser arkene til samlet print...</div>
+<main id="printRoot"></main>
+
+<script>
+  const files = [
+    'index.html',
+    'ark/01-tal-algebra.html',
+    'ark/02-procent.html',
+    'ark/03-ligninger.html',
+    'ark/04-funktioner.html',
+    'ark/05-geometri.html',
+    'ark/06-trigonometri.html',
+    'ark/07-statistik.html',
+    'ark/08-formelsamling.html',
+    'ark/09-geogebra.html',
+    'ark/10-sheets.html'
+  ];
+
+  const root = document.getElementById('printRoot');
+  const status = document.getElementById('status');
+  const printBtn = document.getElementById('printBtn');
+  const scopedStyles = document.createElement('style');
+  document.head.appendChild(scopedStyles);
+
+  function scopeSelectors(selectorText, scope) {
+    return selectorText
+      .split(',')
+      .map(selector => {
+        const trimmed = selector.trim();
+        if (!trimmed) return trimmed;
+        if (trimmed.startsWith(scope)) return trimmed;
+        if (trimmed.startsWith('.sheet')) return trimmed.replace('.sheet', `${scope}.sheet`);
+        return `${scope} ${trimmed}`;
+      })
+      .join(', ');
+  }
+
+  function appendScopedStyles(doc, sourceIndex) {
+    const scope = `[data-print-source="${sourceIndex}"]`;
+
+    doc.querySelectorAll('style').forEach(style => {
+      const sheet = style.sheet;
+      if (!sheet) return;
+
+      for (const rule of sheet.cssRules) {
+        if (rule.type === CSSRule.STYLE_RULE) {
+          scopedStyles.append(
+            `${scopeSelectors(rule.selectorText, scope)} { ${rule.style.cssText} }\n`
+          );
+        }
+
+        if (rule.type === CSSRule.MEDIA_RULE) {
+          const mediaRules = [];
+          for (const mediaRule of rule.cssRules) {
+            if (mediaRule.type === CSSRule.STYLE_RULE) {
+              mediaRules.push(
+                `${scopeSelectors(mediaRule.selectorText, scope)} { ${mediaRule.style.cssText} }`
+              );
+            }
+          }
+          if (mediaRules.length) {
+            scopedStyles.append(`@media ${rule.media.mediaText} {\n${mediaRules.join('\n')}\n}\n`);
+          }
+        }
+      }
+    });
+  }
+
+  function loadSheet(src, sourceIndex) {
+    return new Promise((resolve, reject) => {
+      const frame = document.createElement('iframe');
+      frame.className = 'loader-frame';
+      frame.src = src;
+      frame.onload = () => {
+        const doc = frame.contentDocument;
+        const sheets = doc.querySelectorAll('.sheet');
+        if (!sheets.length) {
+          reject(new Error(`Mangler .sheet i ${src}`));
+          return;
+        }
+
+        appendScopedStyles(doc, sourceIndex);
+
+        sheets.forEach(sheet => {
+          const clone = sheet.cloneNode(true);
+          clone.dataset.printSource = String(sourceIndex);
+          clone.style.setProperty('--topic', getComputedStyle(sheet).getPropertyValue('--topic'));
+
+          clone.querySelectorAll('img').forEach((img, index) => {
+            img.src = sheet.querySelectorAll('img')[index].src;
+          });
+          root.appendChild(clone);
+        });
+
+        frame.remove();
+        resolve();
+      };
+      frame.onerror = () => reject(new Error(`Kunne ikke indlæse ${src}`));
+      document.body.appendChild(frame);
+    });
+  }
+
+  async function loadAll() {
+    for (const [index, file] of files.entries()) {
+      status.textContent = `Indlæser ${file}...`;
+      await loadSheet(file, index);
+    }
+    status.textContent = 'Alle ark er klar. Vælg A4, ingen margin, ingen header/footer i printer-dialogen.';
+  }
+
+  printBtn.addEventListener('click', async () => {
+    if (!root.children.length) await loadAll();
+    window.print();
+  });
+
+  loadAll().catch(error => {
+    status.textContent = error.message;
+  });
+</script>
+
+</body>
+</html>

@@ -6,6 +6,8 @@
 # Track the active prototype and required screenshot assets.
 !fp9 note-ark/
 !fp9 note-ark/**
+!print-layout-fix/
+!print-layout-fix/**
 !screenshots/
 !screenshots/**
 

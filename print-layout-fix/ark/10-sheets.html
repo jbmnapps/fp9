@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 10: Google Sheets</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-sheets); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  .formula-table {
+    border-top: 1pt solid var(--ink);
+    margin-top: 8px;
+  }
+  .frow {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    border-bottom: 0.5pt solid var(--rule);
+    padding: 8px 0;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .frow .fname {
+    font-size: 11pt;
+    color: var(--ink);
+  }
+  .frow .fname .sub {
+    display: block;
+    font-size: 10pt;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  .frow .fformula {
+    font-family: var(--font-display);
+    background: var(--paper-tint);
+    border-left: 2pt solid var(--topic);
+    padding: 4px 10px;
+    font-size: 9pt;
+    line-height: 1.22;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  .template {
+    display: block;
+    font-style: italic;
+    font-size: 9.6pt;
+  }
+  .formula-example {
+    display: block;
+    margin-top: 2px;
+    color: var(--ink-soft);
+    font-size: 8.6pt;
+  }
+  .formula-note {
+    margin: 6px 0 8px;
+    font-size: 10pt;
+  }
+  .formula-callout {
+    position: relative;
+  }
+  .formula-callout::before {
+    content: "";
+    position: absolute;
+    left: 38%;
+    top: 36px;
+    width: 42px;
+    height: 32px;
+    border-top: 2pt solid var(--topic);
+    border-right: 2pt solid var(--topic);
+    transform: rotate(-18deg);
+  }
+  .formula-callout::after {
+    content: "";
+    position: absolute;
+    left: calc(38% + 34px);
+    top: 28px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid var(--topic);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    transform: rotate(-18deg);
+  }
+  .zoom-chip {
+    margin-top: 6px;
+    padding: 6px 8px;
+    background: white;
+    border: 1pt solid var(--topic);
+    color: var(--ink);
+    font-size: 9pt;
+    text-align: left;
+    align-self: stretch;
+  }
+  .zoom-chip strong {
+    color: var(--topic);
+  }
+	</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 10 · Google Sheets</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">10</span>Ark</div>
+    <h1 class="sheet-title">Google Sheets</h1>
+    <div class="sheet-subtitle">Formler · diagrammer<br>statistik</div>
+  </header>
+
+  <!-- Det første du skal vide -->
+  <div class="section">
+    <h2 class="section-title">Sådan virker det</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <ol>
+          <li>Hver celle har et navn: fx A1, B2.</li>
+          <li>Først skal du skrive <strong>=</strong> for at lave en formel.</li>
+          <li>Henvis til andre celler i stedet for at skrive tal: <span class="m">=A1+B1</span></li>
+          <li>Træk i hjørnet af en celle for at kopiere formlen ned.</li>
+        </ol>
+        <div class="note"><span class="note-label">Husk</span> I dansk Sheets skrives decimaltal med <strong>komma</strong>, fx 0,05. Hvis din Sheets er engelsk, bruges punktum: 0.05.</div>
+      </div>
+      <div class="screenshot zoom formula-callout">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/05-sheets-formel-zoom.png" alt="Google Sheets med formel =A1+B1">
+        <div class="zoom-chip"><strong>Her:</strong> skriv formlen i cellen eller i formellinjen.</div>
+        <div class="screenshot-hint">Formel i formellinjen.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formler -->
+  <div class="section">
+    <h2 class="section-title">Formler du skal kunne</h2>
+    <div class="note formula-note"><span class="note-label">Vælg</span> Brug den version, der virker i din Sheets-fil. Skift "skriv celler her" ud med dine celler.</div>
+
+    <div class="formula-table">
+      <div class="frow">
+        <div class="fname">Læg sammen<span class="sub">summen af et område</span></div>
+        <div class="fformula"><span class="template">=SUM(skriv celler her)</span><span class="formula-example">fx =SUM(A1:A10)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Gennemsnit<span class="sub">middelværdi</span></div>
+        <div class="fformula"><span class="template">=AVERAGE(skriv celler her) / =GENNEMSNIT(skriv celler her)</span><span class="formula-example">fx =AVERAGE(A1:A10) / =GENNEMSNIT(A1:A10)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Median<span class="sub">det midterste tal</span></div>
+        <div class="fformula"><span class="template">=MEDIAN(skriv celler her)</span><span class="formula-example">fx =MEDIAN(A1:A10)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Typetal<span class="sub">hyppigste tal</span></div>
+        <div class="fformula"><span class="template">=MODE(skriv celler her) / =HYPPIGST(skriv celler her)</span><span class="formula-example">fx =MODE(A1:A10) / =HYPPIGST(A1:A10)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Mindste / største<span class="sub">min og max</span></div>
+        <div class="fformula"><span class="template">=MIN(skriv celler her) / =MAX(skriv celler her) / =MAKS(skriv celler her)</span><span class="formula-example">fx =MIN(A1:A10)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Tæl tal<span class="sub">hvor mange tal er der</span></div>
+        <div class="fformula"><span class="template">=COUNT(skriv celler her) / =TÆL(skriv celler her)</span><span class="formula-example">fx =COUNT(A1:A10) / =TÆL(A1:A10)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Kvartiler<span class="sub">Q1 = 1, Q3 = 3</span></div>
+        <div class="fformula"><span class="template">=QUARTILE(skriv celler her;1) / =KVARTIL(skriv celler her;1)</span><span class="formula-example">Q3: skift 1 til 3</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Kvadratrod<span class="sub">√</span></div>
+        <div class="fformula"><span class="template">=SQRT(celle) / =KVROD(celle)</span><span class="formula-example">fx =SQRT(A1) / =KVROD(A1)</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Potens<span class="sub">x opløftet i n</span></div>
+        <div class="fformula"><span class="template">=celle^n / =POWER(celle;n) / =POTENS(celle;n)</span><span class="formula-example">fx =A1^2</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Procent af<span class="sub">25% af 800</span></div>
+        <div class="fformula"><span class="template">=procent*tal</span><span class="formula-example">fx =25%*800</span></div>
+      </div>
+      <div class="frow">
+        <div class="fname">Rente i flere år<span class="sub">gang med samme faktor</span></div>
+        <div class="fformula"><span class="template">=start*(1+rente)^år</span><span class="formula-example">fx =5000*(1+0,03)^4</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagram -->
+  <div class="section">
+    <h2 class="section-title">Lav et diagram</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <ol>
+          <li>Marker dataene (klik og træk).</li>
+          <li>Klik <strong>Indsæt</strong> → <strong>Diagram</strong>.</li>
+          <li>Vælg diagramtype i sidebaren til højre:
+            <ul>
+              <li><strong>Søjlediagram</strong>: sammenlign kategorier.</li>
+              <li><strong>Cirkeldiagram</strong>: vis fordeling i procent.</li>
+              <li><strong>Linjediagram</strong>: vis udvikling over tid.</li>
+            </ul>
+          </li>
+          <li>Tilføj titel og akselabels via "Tilpas".</li>
+        </ol>
+      </div>
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/07-sheets-diagram-zoom.png" alt="Google Sheets-menuen Indsæt med Diagram markeret">
+        <div class="screenshot-hint">Menuen Indsæt med Diagram.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eksempel -->
+  <div class="section">
+    <h2 class="section-title">Eksempel: beregn statistik på en talrække</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Du har tallene <span class="m">3, 7, 2, 8, 5, 4, 7</span> i celler A1 til A7.</p>
+        <ol>
+          <li>I B1 skriv: <span class="m">=AVERAGE(A1:A7)</span> / <span class="m">=GENNEMSNIT(A1:A7)</span></li>
+          <li>I B2 skriv: <span class="m">=MEDIAN(A1:A7)</span></li>
+          <li>I B3 skriv: <span class="m">=MIN(A1:A7)</span></li>
+          <li>I B4 skriv: <span class="m">=MAX(A1:A7)</span> / <span class="m">=MAKS(A1:A7)</span></li>
+        </ol>
+        <p>Skriv navnene i C-kolonnen, fx "Gennemsnit", så er det nemt at læse.</p>
+      </div>
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/06-sheets-statistik-zoom.png" alt="Google Sheets med statistikformler">
+        <div class="screenshot-hint">Statistikformler i Sheets.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">FP9 note-ark · 9. klasse · matematik</span>
+    <span>Ark 10: Google Sheets</span>
+  </div>
+</section>
+</body>
+</html>

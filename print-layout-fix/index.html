@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>FP9 note-ark: Skriftlig matematik 9. klasse</title>
+<link rel="stylesheet" href="shared/tokens.css">
+<link rel="stylesheet" href="shared/sheet.css">
+<style>
+  /* Cover-specific styles */
+  .cover {
+    --topic: var(--topic-forside);
+  }
+
+  .cover-hero {
+    border-bottom: 2pt solid var(--ink);
+    padding-bottom: var(--s-4);
+    margin-bottom: var(--s-6);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: var(--s-5);
+  }
+
+  .cover-eyebrow {
+    font-family: var(--font-display);
+    font-size: 11.5pt;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: 48pt;
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .cover-meta {
+    font-size: 10.5pt;
+    color: var(--ink-faint);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .cover-meta strong { color: var(--ink-soft); font-weight: 600; }
+
+  /* Method strip: "sådan griber du en opgave an" */
+  .method-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--s-4);
+    margin-bottom: var(--s-6);
+  }
+
+  .method-step {
+    border-top: 1.5pt solid var(--ink);
+    padding-top: 10px;
+    font-size: 10.5pt;
+  }
+
+  .method-step .step-num {
+    font-family: var(--font-display);
+    font-size: 22pt;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .method-step .step-title {
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-size: 11pt;
+  }
+
+  .method-step .step-body {
+    color: var(--ink-soft);
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  /* Index of sheets */
+  .index-title {
+    font-family: var(--font-display);
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: var(--s-3);
+    padding-bottom: 6px;
+    border-bottom: 0.5pt solid var(--rule);
+  }
+
+  .sheet-index {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .index-item {
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    align-items: center;
+    padding: 7px 12px 7px 0;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 11pt;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom-color: var(--rule);
+    gap: 12px;
+  }
+  .index-item:nth-child(odd) { padding-right: var(--col-gap); }
+  .index-item:nth-child(even) { padding-left: var(--col-gap); }
+
+  .index-item .ix-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 15pt;
+    line-height: 1;
+    text-align: left;
+  }
+
+  .index-item .ix-title {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 11.5pt;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .index-item .ix-sub {
+    font-size: 9.5pt;
+    color: var(--ink-faint);
+  }
+
+  .index-item .ix-tag {
+    font-size: 9pt;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+
+
+  /* Tools strip at bottom */
+  .tools-strip {
+    margin-top: var(--s-3);
+    border-top: 0.5pt solid var(--rule);
+    padding-top: var(--s-2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--col-gap);
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .tools-strip h4 {
+    font-family: var(--font-body);
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  /* Screen-only navigation bar (hidden in print) */
+  .topbar {
+    background: var(--ink);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12pt;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .topbar a {
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-size: 11pt;
+    padding: 6px 12px;
+    border: 0.5pt solid rgba(255,255,255,0.3);
+  }
+  .topbar a:hover { background: rgba(255,255,255,0.1); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="topbar no-print">
+  <span class="brand">FP9 note-ark · Skriftlig matematik · 9. klasse</span>
+  <a href="print-all.html">Print alle ark</a>
+</div>
+
+<section class="sheet cover">
+  <div class="cover-hero">
+    <div>
+      <div class="cover-eyebrow">Skriftlig matematik · 9. klasse · prøvedag</div>
+      <h1 class="cover-title">FP9 <em>note-ark</em></h1>
+    </div>
+    <div class="cover-meta">
+      <div><strong>10 ark</strong> · A4 · print og hav ved siden</div>
+      <div>Værktøjer: GeoGebra, Sheets, lommeregner</div>
+    </div>
+  </div>
+
+  <!-- Method strip -->
+  <h2 class="index-title">Sådan griber du en opgave an</h2>
+  <div class="method-strip">
+    <div class="method-step">
+      <div class="step-num">1</div>
+      <div class="step-title">Læs opgaven</div>
+      <div class="step-body">Læs hele opgaven. Streg under det, der bliver spurgt om.</div>
+    </div>
+    <div class="method-step">
+      <div class="step-num">2</div>
+      <div class="step-title">Find tallene</div>
+      <div class="step-body">Skriv alle tal og enheder ned. Hvad ved du? Hvad mangler du?</div>
+    </div>
+    <div class="method-step">
+      <div class="step-num">3</div>
+      <div class="step-title">Vælg ark</div>
+      <div class="step-body">Hvad handler opgaven om? Find det rigtige ark her.</div>
+    </div>
+    <div class="method-step">
+      <div class="step-num">4</div>
+      <div class="step-title">Regn opgaven</div>
+      <div class="step-body">Skriv mellemregninger ned. Også når du bruger GeoGebra eller Sheets.</div>
+    </div>
+    <div class="method-step">
+      <div class="step-num">5</div>
+      <div class="step-title">Tjek svaret</div>
+      <div class="step-body">Giver svaret mening? Skriv enhed på (kr, kg, cm, %).</div>
+    </div>
+  </div>
+
+  <!-- Index -->
+  <h2 class="index-title">Arkene</h2>
+  <div class="sheet-index">
+
+    <a class="index-item" href="ark/01-tal-algebra.html" style="--accent: var(--topic-tal)">
+      <span class="ix-num">01</span>
+      <div class="ix-text">
+        <div class="ix-title">Tal og algebra</div>
+        <div class="ix-sub">Regneregler, brøker og parenteser</div>
+      </div>
+      <span class="ix-tag">grundlag</span>
+    </a>
+
+    <a class="index-item" href="ark/02-procent.html" style="--accent: var(--topic-procent)">
+      <span class="ix-num">02</span>
+      <div class="ix-text">
+        <div class="ix-title">Procent</div>
+        <div class="ix-sub">Procent af, rabat, moms og rente</div>
+      </div>
+      <span class="ix-tag">ofte til prøve</span>
+    </a>
+
+    <a class="index-item" href="ark/03-ligninger.html" style="--accent: var(--topic-ligninger)">
+      <span class="ix-num">03</span>
+      <div class="ix-text">
+        <div class="ix-title">Ligninger og uligheder</div>
+        <div class="ix-sub">Find x: også med to ligninger</div>
+      </div>
+      <span class="ix-tag">løs i GeoGebra</span>
+    </a>
+
+    <a class="index-item" href="ark/04-funktioner.html" style="--accent: var(--topic-funktioner)">
+      <span class="ix-num">04</span>
+      <div class="ix-text">
+        <div class="ix-title">Funktioner</div>
+        <div class="ix-sub">Lineære og eksponentielle funktioner</div>
+      </div>
+      <span class="ix-tag">graf og formel</span>
+    </a>
+
+    <a class="index-item" href="ark/05-geometri.html" style="--accent: var(--topic-geometri)">
+      <span class="ix-num">05</span>
+      <div class="ix-text">
+        <div class="ix-title">Geometri</div>
+        <div class="ix-sub">Areal, omkreds og rumfang</div>
+      </div>
+      <span class="ix-tag">formler i ark 08</span>
+    </a>
+
+    <a class="index-item" href="ark/06-trigonometri.html" style="--accent: var(--topic-trigonometri)">
+      <span class="ix-num">06</span>
+      <div class="ix-text">
+        <div class="ix-title">Trigonometri</div>
+        <div class="ix-sub">Retvinklede trekanter: sin, cos og tan</div>
+      </div>
+      <span class="ix-tag">husk SOH-CAH-TOA</span>
+    </a>
+
+    <a class="index-item" href="ark/07-statistik.html" style="--accent: var(--topic-statistik)">
+      <span class="ix-num">07</span>
+      <div class="ix-text">
+        <div class="ix-title">Statistik</div>
+        <div class="ix-sub">Middel, median, kvartil og boksplot</div>
+      </div>
+      <span class="ix-tag">brug Sheets</span>
+    </a>
+
+    <a class="index-item" href="ark/08-formelsamling.html" style="--accent: var(--topic-formler)">
+      <span class="ix-num">08</span>
+      <div class="ix-text">
+        <div class="ix-title">Formelsamling</div>
+        <div class="ix-sub">Alle formler: til opslag</div>
+      </div>
+      <span class="ix-tag">opslag</span>
+    </a>
+
+    <a class="index-item" href="ark/09-geogebra.html" style="--accent: var(--topic-geogebra)">
+      <span class="ix-num">09</span>
+      <div class="ix-text">
+        <div class="ix-title">GeoGebra: sådan</div>
+        <div class="ix-sub">Løs ligning, tegn graf, mål i tegning</div>
+      </div>
+      <span class="ix-tag">værktøj</span>
+    </a>
+
+    <a class="index-item" href="ark/10-sheets.html" style="--accent: var(--topic-sheets)">
+      <span class="ix-num">10</span>
+      <div class="ix-text">
+        <div class="ix-title">Google Sheets: sådan</div>
+        <div class="ix-sub">SUM, AVERAGE/GENNEMSNIT, MEDIAN og diagrammer</div>
+      </div>
+      <span class="ix-tag">værktøj</span>
+    </a>
+
+  </div>
+
+  <!-- Tools strip -->
+  <div class="tools-strip">
+    <div>
+      <h4>Husk altid</h4>
+      Skriv mellemregninger. Skriv enheder. Sæt facit i ramme eller understreg.
+    </div>
+    <div>
+      <h4>Sidder du fast</h4>
+      Spring opgaven over. Lav den næste. Kom tilbage til sidst.
+    </div>
+    <div>
+      <h4>Tid</h4>
+      Cirka 1 minut pr. point. Brug ikke 20 min på en 2-points opgave.
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

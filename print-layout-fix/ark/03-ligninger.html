@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 03: Ligninger</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-ligninger); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  .balance {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin: var(--s-3) 0;
+  }
+  .balance .op {
+    background: var(--paper-tint);
+    border: 0.5pt solid var(--rule);
+    padding: 8px;
+    text-align: center;
+  }
+  .balance .op-label {
+    font-size: 9pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .balance .op-arrow {
+    font-family: var(--font-display);
+    font-size: 18pt;
+    color: var(--topic);
+    margin-bottom: 4px;
+  }
+  .balance .op-do {
+    font-size: 10pt;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 03 · Ligninger</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">03</span>Ark</div>
+    <h1 class="sheet-title">Ligninger</h1>
+    <div class="sheet-subtitle">Find x<br>også med to ubekendte</div>
+  </header>
+
+  <!-- Hovedreglen -->
+  <div class="section">
+    <h2 class="section-title">Hovedreglen: gør det samme på begge sider</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>En ligning er som en vægtskål. Det du gør på den ene side, skal du gøre på den anden: så er den stadig i balance.</p>
+        <p>Mål: få <span class="m">x</span> til at stå alene på den ene side.</p>
+        <p style="margin-top:10px">Brug "modsatte" regnetegn for at flytte ting væk fra <span class="m">x</span>:</p>
+        <div class="balance">
+          <div class="op"><div class="op-label">+ 5</div><div class="op-arrow">→</div><div class="op-do">træk 5 fra</div></div>
+          <div class="op"><div class="op-label">− 5</div><div class="op-arrow">→</div><div class="op-do">læg 5 til</div></div>
+          <div class="op"><div class="op-label">· 3</div><div class="op-arrow">→</div><div class="op-do">dividér med 3</div></div>
+          <div class="op"><div class="op-label">/ 3</div><div class="op-arrow">→</div><div class="op-do">gang med 3</div></div>
+        </div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Løs: <span class="m">2x + 6 = 14</span></p>
+        <p class="step">Træk 6 fra på begge sider:</p>
+        <p class="formula-block"><span class="formula">2x = 8</span></p>
+        <p class="step">Dividér med 2 på begge sider:</p>
+        <p class="formula-block"><span class="formula">x = 4</span></p>
+        <p class="step">Tjek: 2·4 + 6 = 14 ✓</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ligning med x på begge sider -->
+  <div class="section">
+    <h2 class="section-title">Ligning med x på begge sider</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <div class="method-label">Sådan gør du</div>
+        <ol>
+          <li>Saml alle <span class="m">x</span> på den ene side.</li>
+          <li>Saml alle tal på den anden side.</li>
+          <li>Dividér så <span class="m">x</span> står alene.</li>
+        </ol>
+        <div class="note"><span class="note-label">Tip</span> Prøv at samle x'erne på den side hvor der er <em>flest</em>: så undgår du minus-x.</div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Løs: <span class="m">5x − 4 = 2x + 11</span></p>
+        <p class="step">Træk 2x fra på begge sider:</p>
+        <p class="formula-block"><span class="formula">3x − 4 = 11</span></p>
+        <p class="step">Læg 4 til:</p>
+        <p class="formula-block"><span class="formula">3x = 15</span></p>
+        <p class="step">Dividér med 3:</p>
+        <p class="formula-block"><span class="formula">x = 5</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- To ligninger med to ubekendte -->
+  <div class="section">
+    <h2 class="section-title">To ligninger med to ubekendte</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Når en opgave har <em>to</em> ubekendte (fx <span class="m">x</span> og <span class="m">y</span>), skal du have <em>to</em> ligninger.</p>
+        <p><strong>Den nemme måde: brug GeoGebra:</strong></p>
+        <ol>
+          <li>Åbn GeoGebra → <em>CAS-værksted</em></li>
+          <li>Skriv begge ligninger ned</li>
+          <li>Klik <strong>Løs</strong> (x=)-knappen</li>
+          <li>GeoGebra giver dig <span class="m">x</span> og <span class="m">y</span></li>
+        </ol>
+        <p style="margin-top:8px"><strong>I hånden:</strong> isolér <span class="m">x</span> i den ene ligning, sæt det ind i den anden.</p>
+      </div>
+
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/01b-cas-system-zoom.png" alt="GeoGebra CAS med to ligninger løst">
+        <div class="screenshot-hint">CAS-værksted med to ligninger og svar for x og y.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Uligheder -->
+  <div class="section">
+    <h2 class="section-title">Uligheder</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>En ulighed bruger <span class="m">&lt;</span>, <span class="m">&gt;</span>, <span class="m">≤</span> eller <span class="m">≥</span> i stedet for lighedstegn.</p>
+        <p>Du løser den næsten som en ligning: med én undtagelse:</p>
+        <div class="warn"><span class="warn-label">Vigtigt</span> Når du <strong>ganger eller dividerer med et negativt tal</strong>, skal du <strong>vende uligheds­tegnet om</strong>.</div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Løs: <span class="m">3x + 5 &lt; 17</span></p>
+        <p class="step">Træk 5 fra:</p>
+        <p class="formula-block"><span class="formula">3x &lt; 12</span></p>
+        <p class="step">Dividér med 3:</p>
+        <p class="formula-block"><span class="formula">x &lt; 4</span></p>
+        <p style="margin-top:10px"><strong>Med negativt tal:</strong></p>
+        <p class="formula-block"><span class="formula">−2x &gt; 8</span></p>
+        <p class="step">Dividér med −2 (vend tegnet!):</p>
+        <p class="formula-block"><span class="formula">x &lt; −4</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">FP9 note-ark · 9. klasse · matematik</span>
+    <span>Ark 03: Ligninger</span>
+  </div>
+</section>
+</body>
+</html>
