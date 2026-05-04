@@ -1,4 +1,4 @@
-# Memory - Cheat Sheets prototype
+# Memory - FP9 note-ark prototype
 
 Sidst opdateret: 2026-05-04
 
@@ -6,7 +6,7 @@ Sidst opdateret: 2026-05-04
 
 Arbejd primært i:
 
-`/Users/jonasbenjamin/WORKSPACES/Cheat Sheets-CODEX/cheat sheets/`
+`fp9 note-ark/`
 
 Projektroden indeholder stadig `AGENTS.md`, `reviewers/` og `screenshots/`.
 
@@ -16,10 +16,10 @@ Projektroden indeholder stadig `AGENTS.md`, `reviewers/` og `screenshots/`.
 - Små, aftalte rettelser må laves direkte.
 - Ingen destruktive operationer uden bekræftelse.
 - Hvis næste arbejde handler om prototypen, læs først:
-  1. `cheat sheets/memory.md`
-  2. `cheat sheets/status.md`
-  3. `cheat sheets/HANDOFF.md`
-  4. `cheat sheets/CLAUDE.md`
+  1. `fp9 note-ark/memory.md`
+  2. `fp9 note-ark/status.md`
+  3. `fp9 note-ark/HANDOFF.md`
+  4. `fp9 note-ark/CLAUDE.md`
 
 ## Aktuel prototype
 

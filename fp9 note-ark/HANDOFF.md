@@ -1,4 +1,4 @@
-# Handoff - Cheat Sheets prototype
+# Handoff - FP9 note-ark prototype
 
 Sidst opdateret: 2026-05-04
 
@@ -6,24 +6,24 @@ Sidst opdateret: 2026-05-04
 
 Læs i denne rækkefølge:
 
-1. `cheat sheets/memory.md`
-2. `cheat sheets/status.md`
-3. `cheat sheets/HANDOFF.md`
-4. `cheat sheets/CLAUDE.md`
+1. `fp9 note-ark/memory.md`
+2. `fp9 note-ark/status.md`
+3. `fp9 note-ark/HANDOFF.md`
+4. `fp9 note-ark/CLAUDE.md`
 
 Arbejdsmappen er:
 
-`/Users/jonasbenjamin/WORKSPACES/Cheat Sheets-CODEX/cheat sheets/`
+`fp9 note-ark/`
 
 Projektroden er:
 
-`/Users/jonasbenjamin/WORKSPACES/Cheat Sheets-CODEX/`
+projektroden
 
 Bemærk: macOS behandler `handoff.md` og `HANDOFF.md` som samme fil her. Brug `HANDOFF.md` i dokumentation for at matche den faktiske filvisning.
 
 ## Hvad projektet er nu
 
-Det aktive arbejde er Claude Design prototypen i `cheat sheets/`, ikke den gamle rod-HTML i `ark/`.
+Det aktive arbejde er Claude Design prototypen i `fp9 note-ark/`, ikke den gamle rod-HTML i `ark/`.
 
 Prototypen har:
 

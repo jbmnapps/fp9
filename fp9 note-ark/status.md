@@ -1,10 +1,10 @@
-# Status - Cheat Sheets prototype
+# Status - FP9 note-ark prototype
 
 Sidst opdateret: 2026-05-04
 
 ## Kort status
 
-Projektet i `cheat sheets/` er en printvenlig Claude Design prototype med forside, 10 cheat sheets og samlet printside.
+Projektet i `fp9 note-ark/` er en printvenlig Claude Design prototype med forside, 10 FP9 note-ark og samlet printside.
 
 Aktuel status: brugbar prototype, men ikke færdig-godkendt. De største P0-matematikfejl fra review er rettet. Print og screenshot-læsbarhed er forbedret. Der mangler stadig visuel/sproglig finpolering og en reel printkontrol.
 

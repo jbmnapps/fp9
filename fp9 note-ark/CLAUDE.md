@@ -1,4 +1,4 @@
-# Cheat Sheets — Skriftlig matematik 9. klasse
+# FP9 note-ark — Skriftlig matematik 9. klasse
 
 ## Hvad er det her
 Print-venlige A4-ark til en 9. klasse, der skal til skriftlig prøve i matematik. Eleverne er fagligt svage og har manglet forberedelse. Arkene ligger ved siden af dem under prøven.
