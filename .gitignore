@@ -1,6 +1,7 @@
 # Default-deny: this project folder contains source PDFs and local scratch files.
 *
 !.gitignore
+!index.html
 
 # Track the active prototype and required screenshot assets.
 !fp9 note-ark/
