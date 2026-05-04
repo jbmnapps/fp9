@@ -1,0 +1,21 @@
+# Default-deny: this project folder contains source PDFs and local scratch files.
+*
+!.gitignore
+
+# Track the active prototype and required screenshot assets.
+!cheat sheets/
+!cheat sheets/**
+!screenshots/
+!screenshots/**
+
+# Keep local/system noise out of Git.
+.DS_Store
+**/.DS_Store
+.claude/
+
+# Do not publish old source/reference folders from the parent workspace.
+/ark/
+/shared/
+/reviewers/
+/prøvebanken/
+/Elevprøver_FP9guidelines/
