@@ -407,7 +407,7 @@
 
 @page {
   size: A4 portrait;
-  margin: 0;
+  margin: 11mm;
 }
 
 @media print {
@@ -420,10 +420,17 @@
   .sheet {
     margin: 0;
     box-shadow: none;
-    width: 210mm;
-    min-height: 297mm;
+    width: auto;
+    min-height: 275mm;
+    padding: 0;
     page-break-after: always;
     overflow: visible;
+  }
+
+  .sheet-footer {
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   .no-print { display: none !important; }
