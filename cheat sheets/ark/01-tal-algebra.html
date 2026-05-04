@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 01: Tal og algebra</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-tal); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--col-gap);
+  }
+  .rule {
+    border-top: 1pt solid var(--rule);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 11pt;
+  }
+  .rule .rule-formula {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .rule .rule-ex {
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 01 · Tal og algebra</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">01</span>Ark</div>
+    <h1 class="sheet-title">Tal og algebra</h1>
+    <div class="sheet-subtitle">Regneregler<br>brøker · parenteser</div>
+  </header>
+
+  <!-- Regnerækkefølge -->
+  <div class="section">
+    <h2 class="section-title">Regnerækkefølge</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Når en opgave har flere regnetegn, så regn i denne rækkefølge:</p>
+        <ol>
+          <li><strong>Parenteser</strong> ( ) først</li>
+          <li><strong>Potens</strong> og rod (x², √)</li>
+          <li><strong>Gange og dividere</strong> (· og /)</li>
+          <li><strong>Plus og minus</strong> (+ og −)</li>
+        </ol>
+        <div class="note"><span class="note-label">Husk</span> Inden for samme niveau: regn fra venstre mod højre.</div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p class="formula-block"><span class="formula">3 + 4 · 2</span></p>
+        <p class="step">Gang før plus:</p>
+        <p class="formula-block"><span class="formula">= 3 + 8 = 11</span></p>
+        <p style="margin-top:10px"><strong>Med parenteser:</strong></p>
+        <p class="formula-block"><span class="formula">(3 + 4) · 2 = 7 · 2 = 14</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parenteser -->
+  <div class="section">
+    <h2 class="section-title">Parenteser: gange ind</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Når der står et tal eller bogstav foran en parentes, så <strong>gang det ind</strong> på alt i parentesen:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">a · (b + c) = a·b + a·c</span></p>
+        <div class="warn"><span class="warn-label">Pas på</span> Står der minus foran parentesen, vendes alle fortegn inde i den: <span class="m">−(a − b) = −a + b</span></div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p class="formula-block"><span class="formula">3 · (x + 5) = 3x + 15</span></p>
+        <p class="formula-block"><span class="formula">2 · (4 − a) = 8 − 2a</span></p>
+        <p class="formula-block"><span class="formula">−(x − 3) = −x + 3</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brøker -->
+  <div class="section">
+    <h2 class="section-title">Brøker</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p><strong>Plus og minus:</strong> samme nævner: læg tæller sammen.</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">a/c + b/c = (a + b)/c</span></p>
+        <p>Forskellig nævner: gør dem ens (find fællesnævner).</p>
+        <p style="margin-top:10px"><strong>Gange:</strong> tæller · tæller, nævner · nævner.</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">a/b · c/d = (a·c)/(b·d)</span></p>
+        <p><strong>Dividere:</strong> gang med den omvendte.</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">a/b / c/d = a/b · d/c</span></p>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p><strong>Plus:</strong></p>
+        <p class="formula-block"><span class="formula">1/4 + 2/4 = 3/4</span></p>
+        <p><strong>Forskellig nævner:</strong></p>
+        <p class="formula-block"><span class="formula">1/2 + 1/3 = 3/6 + 2/6 = 5/6</span></p>
+        <p><strong>Gange:</strong></p>
+        <p class="formula-block"><span class="formula">2/3 · 4/5 = 8/15</span></p>
+        <p><strong>Dividere:</strong></p>
+        <p class="formula-block"><span class="formula">3/4 / 1/2 = 3/4 · 2/1 = 6/4 = 3/2</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Potens og rod -->
+  <div class="section">
+    <h2 class="section-title">Potens og kvadratrod</h2>
+    <div class="rules-grid">
+      <div class="rule">
+        <div class="rule-formula">aⁿ = a · a · a … (n gange)</div>
+        <div class="rule-ex">2³ = 2 · 2 · 2 = 8</div>
+      </div>
+      <div class="rule">
+        <div class="rule-formula">a⁰ = 1, når a ≠ 0</div>
+        <div class="rule-ex">5⁰ = 1</div>
+      </div>
+      <div class="rule">
+        <div class="rule-formula">aⁿ · aᵐ = aⁿ⁺ᵐ</div>
+        <div class="rule-ex">2³ · 2² = 2⁵ = 32</div>
+      </div>
+      <div class="rule">
+        <div class="rule-formula">aⁿ / aᵐ = aⁿ⁻ᵐ, når a ≠ 0</div>
+        <div class="rule-ex">2⁵ / 2² = 2³ = 8</div>
+      </div>
+      <div class="rule">
+        <div class="rule-formula">(aⁿ)ᵐ = aⁿ·ᵐ</div>
+        <div class="rule-ex">(2²)³ = 2⁶ = 64</div>
+      </div>
+      <div class="rule">
+        <div class="rule-formula">√(a · b) = √a · √b, når a og b er 0 eller positive</div>
+        <div class="rule-ex">√36 = √(4 · 9) = 2 · 3 = 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Negative tal -->
+  <div class="section">
+    <h2 class="section-title">Negative tal</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p><strong>Plus og minus:</strong></p>
+        <ul>
+          <li>To minusser bliver til plus: <span class="m">5 − (−3) = 5 + 3 = 8</span></li>
+          <li>Plus og minus = minus: <span class="m">5 + (−3) = 5 − 3 = 2</span></li>
+        </ul>
+        <p><strong>Gange og dividere:</strong></p>
+        <ul>
+          <li>Plus · plus = plus</li>
+          <li>Minus · minus = plus</li>
+          <li>Plus · minus = minus</li>
+        </ul>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p class="formula-block"><span class="formula">(−3) · (−4) = 12</span></p>
+        <p class="formula-block"><span class="formula">(−6) · 2 = −12</span></p>
+        <p class="formula-block"><span class="formula">−10 / (−5) = 2</span></p>
+        <p class="formula-block"><span class="formula">7 − (−2) = 9</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 01: Tal og algebra</span>
+  </div>
+</section>
+</body>
+</html>

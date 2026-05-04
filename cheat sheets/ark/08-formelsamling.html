@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 08: Formelsamling</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-formler); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  .formula-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px var(--col-gap);
+  }
+  .frow {
+    border-bottom: 0.5pt solid var(--rule);
+    padding: 6px 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .frow .fname {
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+  }
+  .frow .fformula {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 11.5pt;
+    color: var(--ink);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .col-title {
+    font-family: var(--font-display);
+    font-size: 13pt;
+    font-weight: 500;
+    color: var(--topic);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1pt solid var(--ink);
+  }
+</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 08 · Formelsamling</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">08</span>Ark</div>
+    <h1 class="sheet-title">Formelsamling</h1>
+    <div class="sheet-subtitle">Slå op<br>find den rigtige formel</div>
+  </header>
+
+  <div class="section">
+    <h2 class="section-title">Procent</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">Procent af et tal</span><span class="fformula">X/100 · Y</span></div>
+      <div class="frow"><span class="fname">Hvad er procenten</span><span class="fformula">(X / Y) · 100</span></div>
+      <div class="frow"><span class="fname">Læg X% til</span><span class="fformula">· (1 + X/100)</span></div>
+      <div class="frow"><span class="fname">Træk X% fra</span><span class="fformula">· (1 − X/100)</span></div>
+      <div class="frow"><span class="fname">Rente over n år</span><span class="fformula">K = K₀ · (1 + r)ⁿ</span></div>
+      <div class="frow"><span class="fname">Find pris før rabat/moms</span><span class="fformula">pris efter / faktor</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Geometri: areal og omkreds</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">Areal, rektangel</span><span class="fformula">A = l · b</span></div>
+      <div class="frow"><span class="fname">Omkreds, rektangel</span><span class="fformula">O = 2l + 2b</span></div>
+      <div class="frow"><span class="fname">Areal, kvadrat</span><span class="fformula">A = s²</span></div>
+      <div class="frow"><span class="fname">Omkreds, kvadrat</span><span class="fformula">O = 4s</span></div>
+      <div class="frow"><span class="fname">Areal, trekant</span><span class="fformula">A = ½ · g · h</span></div>
+      <div class="frow"><span class="fname">Omkreds, trekant</span><span class="fformula">O = a + b + c</span></div>
+      <div class="frow"><span class="fname">Areal, parallelogram</span><span class="fformula">A = a · h</span></div>
+      <div class="frow"><span class="fname">Areal, trapez</span><span class="fformula">A = ½(a+b) · h</span></div>
+      <div class="frow"><span class="fname">Areal, cirkel</span><span class="fformula">A = π · r²</span></div>
+      <div class="frow"><span class="fname">Omkreds, cirkel</span><span class="fformula">O = 2 · π · r</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Geometri: rumfang</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">Kasse</span><span class="fformula">V = l · b · h</span></div>
+      <div class="frow"><span class="fname">Terning</span><span class="fformula">V = s³</span></div>
+      <div class="frow"><span class="fname">Cylinder</span><span class="fformula">V = π · r² · h</span></div>
+      <div class="frow"><span class="fname">Kegle</span><span class="fformula">V = ⅓ · π · r² · h</span></div>
+      <div class="frow"><span class="fname">Kugle</span><span class="fformula">V = 4/3 · π · r³</span></div>
+      <div class="frow"><span class="fname">Pyramide</span><span class="fformula">V = ⅓ · G · h</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Trekanter: Pythagoras og trigonometri</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">Pythagoras</span><span class="fformula">kun retvinklet: a² + b² = c²</span></div>
+      <div class="frow"><span class="fname">Hypotenuse</span><span class="fformula">c = √(a² + b²)</span></div>
+      <div class="frow"><span class="fname">Sinus (SOH)</span><span class="fformula">sin(v) = mod / hyp</span></div>
+      <div class="frow"><span class="fname">Cosinus (CAH)</span><span class="fformula">cos(v) = hos / hyp</span></div>
+      <div class="frow"><span class="fname">Tangens (TOA)</span><span class="fformula">tan(v) = mod / hos</span></div>
+      <div class="frow"><span class="fname">Find vinkel med sin</span><span class="fformula">v = sin⁻¹(mod/hyp)</span></div>
+      <div class="frow"><span class="fname">Find vinkel med cos</span><span class="fformula">v = cos⁻¹(hos/hyp)</span></div>
+      <div class="frow"><span class="fname">Find vinkel med tan</span><span class="fformula">v = tan⁻¹(mod/hos)</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Funktioner</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">Lineær funktion</span><span class="fformula">y = a · x + b</span></div>
+      <div class="frow"><span class="fname">Hældning a</span><span class="fformula">a = (y₂ − y₁) / (x₂ − x₁)</span></div>
+      <div class="frow"><span class="fname">Skæring b</span><span class="fformula">b = y − a · x</span></div>
+      <div class="frow"><span class="fname">Eksponentiel</span><span class="fformula">y = b · aˣ</span></div>
+      <div class="frow"><span class="fname">Vækstrate</span><span class="fformula">r = a − 1 som decimaltal; procent = r · 100%</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Statistik</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">Middelværdi</span><span class="fformula">Σx / n</span></div>
+      <div class="frow"><span class="fname">Median</span><span class="fformula">midten af sortede tal</span></div>
+      <div class="frow"><span class="fname">Typetal</span><span class="fformula">det hyppigste tal</span></div>
+      <div class="frow"><span class="fname">Variationsbredde</span><span class="fformula">max − min</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Enheder: vigtige omregninger</h2>
+    <div class="formula-list">
+      <div class="frow"><span class="fname">1 m</span><span class="fformula">100 cm = 1000 mm</span></div>
+      <div class="frow"><span class="fname">1 km</span><span class="fformula">1000 m</span></div>
+      <div class="frow"><span class="fname">1 m²</span><span class="fformula">10 000 cm²</span></div>
+      <div class="frow"><span class="fname">1 m³</span><span class="fformula">1000 liter</span></div>
+      <div class="frow"><span class="fname">1 liter</span><span class="fformula">1000 cm³ = 1 dm³</span></div>
+      <div class="frow"><span class="fname">1 kg</span><span class="fformula">1000 g</span></div>
+      <div class="frow"><span class="fname">1 time</span><span class="fformula">60 min = 3600 sek</span></div>
+      <div class="frow"><span class="fname">π</span><span class="fformula">≈ 3,14</span></div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 08: Formelsamling</span>
+  </div>
+</section>
+</body>
+</html>

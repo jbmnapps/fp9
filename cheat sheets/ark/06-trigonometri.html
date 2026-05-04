@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 06: Trigonometri</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-trigonometri); }
+
+  .topbar {
+    background: var(--ink); color: white; padding: 8px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11pt; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  /* Mnemonic block */
+  .mnemonic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--col-gap);
+    margin: var(--s-3) 0 0;
+  }
+  .mnem-card {
+    border-top: 1.5pt solid var(--topic);
+    padding-top: 12px;
+  }
+  .mnem-card .big {
+    font-family: var(--font-display);
+    font-size: 22pt;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--topic);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .mnem-card .formula-mini {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--ink);
+    background: var(--highlight);
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .mnem-card .desc {
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  svg .lbl { font-family: 'Source Sans 3', sans-serif; font-size: 12px; fill: var(--ink); }
+  svg .lbl-it { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; fill: var(--ink); }
+  svg .side-name { font-family: 'Source Sans 3', sans-serif; font-size: 10px; fill: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
+  svg .topic-stroke { stroke: var(--topic); }
+
+  /* Override .example-box height for sections where we WANT row alignment */
+  .method-row.aligned > * {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar no-print">
+  <span class="brand">Ark 06 · Trigonometri</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">06</span>Ark</div>
+    <h1 class="sheet-title">Trigonometri</h1>
+    <div class="sheet-subtitle">Retvinklede trekanter<br>sin · cos · tan</div>
+  </header>
+
+  <!-- Section 1: siderne -->
+  <div class="section">
+    <h2 class="section-title">Siderne i en retvinklet trekant</h2>
+
+    <div class="method-row aligned">
+      <div class="method">
+        <p>En retvinklet trekant har én vinkel på <span class="m">90°</span>. Vælg én af de to andre vinkler: kald den <span class="m">v</span>.</p>
+        <p>Så har siderne navne:</p>
+        <ul>
+          <li><strong>Hypotenusen</strong>: den længste side. Ligger over for den rette vinkel.</li>
+          <li><strong>Modstående</strong>: siden over for vinkel <span class="m">v</span>.</li>
+          <li><strong>Hosliggende</strong>: siden ved siden af vinkel <span class="m">v</span>.</li>
+        </ul>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 320 220" width="100%">
+          <polygon points="40,180 280,180 280,40" fill="none" class="topic-stroke" stroke-width="2"/>
+          <polyline points="262,180 262,162 280,162" fill="none" stroke="#1f1d1a" stroke-width="1.2"/>
+          <path d="M 70 180 A 30 30 0 0 0 65 165" fill="none" stroke="#1f1d1a" stroke-width="1.2"/>
+          <text x="76" y="172" class="lbl-it">v</text>
+          <text x="160" y="200" class="side-name" text-anchor="middle">Hosliggende</text>
+          <text x="295" y="115" class="side-name" text-anchor="middle" transform="rotate(90 295 115)">Modstående</text>
+          <text x="145" y="100" class="side-name" text-anchor="middle" transform="rotate(-30 145 100)">Hypotenuse</text>
+        </svg>
+        <div class="figure-caption">Vælg vinkel <span class="m">v</span> først: så er det nemt at se hvilken side er hvad.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: SOH CAH TOA -->
+  <div class="section">
+    <h2 class="section-title">De tre formler: SOH&nbsp;CAH&nbsp;TOA</h2>
+    <p class="section-lead">Sig det højt: <em>"så ka' to"</em>. Det er de tre du skal kunne udenad.</p>
+
+    <div class="mnemonic">
+      <div class="mnem-card">
+        <div class="big">SOH</div>
+        <div class="formula-mini">sin(v) = mod / hyp</div>
+        <div class="desc"><strong>Sinus</strong>: dividér modstående med hypotenusen.</div>
+      </div>
+      <div class="mnem-card">
+        <div class="big">CAH</div>
+        <div class="formula-mini">cos(v) = hos / hyp</div>
+        <div class="desc"><strong>Cosinus</strong>: dividér hosliggende med hypotenusen.</div>
+      </div>
+      <div class="mnem-card">
+        <div class="big">TOA</div>
+        <div class="formula-mini">tan(v) = mod / hos</div>
+        <div class="desc"><strong>Tangens</strong>: dividér modstående med hosliggende.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Find en side -->
+  <div class="section">
+    <h2 class="section-title">Find en ukendt side</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <div class="method-label">Sådan gør du</div>
+        <ol>
+          <li>Tegn trekanten. Marker vinkel <span class="m">v</span>.</li>
+          <li>Skriv hvilke sider du <em>kender</em>, og hvilken du skal <em>finde</em>.</li>
+          <li>Vælg formel:
+            <ul style="margin-top:4px">
+              <li>mod og hyp → <strong>sin</strong></li>
+              <li>hos og hyp → <strong>cos</strong></li>
+              <li>mod og hos → <strong>tan</strong></li>
+            </ul>
+          </li>
+          <li>Sæt ind i formlen. Isolér x. Regn.</li>
+        </ol>
+        <div class="warn"><span class="warn-label">Tjek</span> Lommeregner skal stå på <strong>DEG</strong> (grader), ikke RAD.</div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Vinkel <span class="m">v = 35°</span>, hypotenuse = <span class="n">12 cm</span>.<br>Find modstående side <span class="m">x</span>.</p>
+        <p class="step">Mod og hyp → brug sin.</p>
+        <p class="formula-block"><span class="formula">sin(35°) = x / 12</span></p>
+        <p class="step">Gang med 12 på begge sider:</p>
+        <p class="formula-block"><span class="formula">x = 12 · sin(35°)</span></p>
+        <p>x ≈ <span class="n">6,88 cm</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Find en vinkel -->
+  <div class="section">
+    <h2 class="section-title">Find en ukendt vinkel</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <div class="method-label">Sådan gør du</div>
+        <ol>
+          <li>Du kender to sider. Find ud af hvilke (mod, hos eller hyp).</li>
+          <li>Vælg formel som før.</li>
+          <li>Brug den <strong>omvendte</strong> knap på lommeregneren: <span class="m">sin⁻¹</span>, <span class="m">cos⁻¹</span> eller <span class="m">tan⁻¹</span>. Den ligger oftest under "shift".</li>
+        </ol>
+        <div class="note"><span class="note-label">Tip</span> sin⁻¹ kaldes også <em>arcsin</em>. Den giver vinklen tilbage.</div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Modstående = <span class="n">5</span>, hosliggende = <span class="n">8</span>.<br>Find vinkel <span class="m">v</span>.</p>
+        <p class="step">Mod og hos → brug tan.</p>
+        <p class="formula-block"><span class="formula">tan(v) = 5 / 8 = 0,625</span></p>
+        <p class="step">Tag tan⁻¹ på begge sider:</p>
+        <p class="formula-block"><span class="formula">v = tan⁻¹(0,625)</span></p>
+        <p>v ≈ <span class="n">32,0°</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Pythagoras -->
+  <div class="section">
+    <h2 class="section-title">Pythagoras: når du ikke har en vinkel</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Hvis trekanten er retvinklet, og du kender to sider: brug Pythagoras til at finde den tredje side.</p>
+        <p class="formula-block"><span class="formula">a² + b² = c²</span></p>
+        <p><span class="m">c</span> = hypotenusen. <span class="m">a</span> og <span class="m">b</span> = de to kateter.</p>
+        <ul>
+          <li>Find hypotenusen: <span class="m">c = √(a² + b²)</span></li>
+          <li>Find en katete: <span class="m">a = √(c² − b²)</span></li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Kateter = <span class="n">3</span> og <span class="n">4</span>.<br>Find hypotenusen.</p>
+        <p class="formula-block"><span class="formula">c = √(3² + 4²)</span></p>
+        <p class="formula-block"><span class="formula">c = √(9 + 16) = √25</span></p>
+        <p>c = <span class="n">5</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 06: Trigonometri</span>
+  </div>
+</section>
+
+</body>
+</html>

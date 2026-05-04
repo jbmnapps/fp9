@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 09: GeoGebra</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-geogebra); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  .gg-task { margin-bottom: var(--s-5); break-inside: avoid; }
+  .gg-task .gg-title {
+    font-family: var(--font-display);
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--topic);
+    margin-bottom: 8px;
+  }
+  .gg-task .gg-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--col-gap);
+    align-items: start;
+  }
+  .gg-task ol { padding-left: 1.2em; }
+  .gg-task ol li { margin-bottom: 7px; line-height: 1.45; }
+  .gg-task .input {
+    font-family: var(--font-display);
+    font-style: italic;
+    background: var(--paper-tint);
+    border: 0.5pt solid var(--rule);
+    padding: 2px 8px;
+    font-size: 11pt;
+  }
+</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 09 · GeoGebra</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">09</span>Ark</div>
+    <h1 class="sheet-title">GeoGebra</h1>
+    <div class="sheet-subtitle">Sådan løser du det<br>i værktøjet</div>
+  </header>
+
+  <div class="section">
+    <h2 class="section-title">Tre værksteder du skal kende</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <ul>
+          <li><strong>Algebra-værksted</strong>: tegn grafer, indtast funktioner, plot punkter.</li>
+          <li><strong>CAS-værksted</strong>: løser ligninger automatisk. Brug knappen <em>x =</em>.</li>
+          <li><strong>Geometri-værksted</strong>: tegn figurer, mål længder og vinkler.</li>
+        </ul>
+        <div class="note"><span class="note-label">Tip</span> Skift værksted i menuen øverst til venstre.</div>
+      </div>
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/04-vaerksteder-menu-zoom.png" alt="GeoGebra-menu med værksteder">
+        <div class="screenshot-hint">Menuen hvor eleverne skifter mellem værksteder.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gg-task">
+    <div class="gg-title">Løs en ligning</div>
+    <div class="gg-steps">
+      <ol>
+        <li>Åbn <strong>CAS-værksted</strong>.</li>
+        <li>Skriv ligningen i en celle, fx <span class="input">2x + 6 = 14</span></li>
+        <li>Tryk på knappen <span class="input">x =</span> i toppen.</li>
+        <li>Svaret står i næste linje, fx <span class="input">x = 4</span>.</li>
+      </ol>
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/01-cas-ligning-zoom.png" alt="GeoGebra CAS med ligningen 2x + 6 = 14">
+        <div class="screenshot-hint">CAS-værksted med ligning og svar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gg-task">
+    <div class="gg-title">Tegn en graf</div>
+    <div class="gg-steps">
+      <ol>
+        <li>Åbn <strong>Algebra-værksted</strong>.</li>
+        <li>Skriv forskriften i input-feltet, fx <span class="input">f(x) = 2x + 1</span></li>
+        <li>Tryk Enter. Grafen tegnes automatisk.</li>
+        <li>Aflæs ved at flytte musen: koordinater vises i bunden.</li>
+      </ol>
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/02b-graf-input-closeup.png" alt="GeoGebra-graftegner med f(x)=2x+1 og punktet P=(3,7)">
+        <div class="screenshot-hint">Algebra-værksted med f(x)=2x+1.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gg-task">
+    <div class="gg-title">Find skæringspunkt mellem to grafer</div>
+    <div class="gg-steps">
+      <ol>
+        <li>Tegn begge funktioner.</li>
+        <li>Skriv <span class="input">Skæring(f, g)</span> i input-feltet.</li>
+        <li>Skæringspunktet vises som et punkt.</li>
+      </ol>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>To linjer: <span class="m">f(x) = 2x + 1</span> og <span class="m">g(x) = −x + 7</span></p>
+        <p class="step">Skæring(f, g) → A = (2, 5)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gg-task">
+    <div class="gg-title">Mål i en tegning (geometri)</div>
+    <div class="gg-steps">
+      <ol>
+        <li>Åbn <strong>Geometri-værksted</strong>.</li>
+        <li>Brug <strong>Polygon</strong>-værktøjet til at tegne figuren.</li>
+        <li>Brug <strong>Areal</strong>- og <strong>Omkreds</strong>-værktøjet til at måle.</li>
+        <li>Brug <strong>Vinkel</strong>-værktøjet ved at klikke på tre punkter.</li>
+        <li>Brug <strong>Afstand</strong> til at måle længden af en side.</li>
+      </ol>
+      <div class="screenshot zoom">
+        <div class="screenshot-label">Screenshot</div>
+        <img src="../../screenshots/03-geometri-trekant-zoom.png" alt="GeoGebra-geometri med trekant og mål">
+        <div class="screenshot-hint">Trekant med målte sider og vinkler.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gg-task">
+    <div class="gg-title">Find forskrift fra to punkter</div>
+    <div class="gg-steps">
+      <ol>
+        <li>Plot punkterne ved at skrive dem direkte: <span class="input">A = (2, 5)</span> og <span class="input">B = (6, 13)</span></li>
+        <li>Skriv <span class="input">Linje(A, B)</span> for at tegne linjen.</li>
+        <li>Forskriften vises automatisk i Algebra-vinduet til venstre.</li>
+      </ol>
+      <div class="note"><span class="note-label">Husk</span> Skriv forskriften ned i din besvarelse.</div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 09: GeoGebra</span>
+  </div>
+</section>
+</body>
+</html>

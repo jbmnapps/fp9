@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 04: Funktioner</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-funktioner); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  svg .axis { stroke: var(--ink-faint); stroke-width: 1; }
+  svg .grid { stroke: var(--rule); stroke-width: 0.5; }
+  svg .line { stroke: var(--topic); stroke-width: 2.5; fill: none; }
+  svg .lbl { font-family: 'Source Sans 3', sans-serif; font-size: 11px; fill: var(--ink-soft); }
+  svg .lbl-it { font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; fill: var(--ink); }
+</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 04 · Funktioner</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">04</span>Ark</div>
+    <h1 class="sheet-title">Funktioner</h1>
+    <div class="sheet-subtitle">Lineære og<br>eksponentielle</div>
+  </header>
+
+  <!-- Lineær -->
+  <div class="section">
+    <h2 class="section-title">Lineær funktion: y = ax + b</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>En ret linje på en graf. Forskriften er:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">y = a · x + b</span></p>
+        <ul>
+          <li><span class="m">a</span> = <strong>hældningen</strong>. Hvor meget y stiger når x stiger med 1.</li>
+          <li><span class="m">b</span> = <strong>skæring med y-aksen</strong>. Hvor linjen krydser y-aksen.</li>
+        </ul>
+        <p style="margin-top:8px"><strong>Hvis a er positiv</strong> → linjen går opad.<br><strong>Hvis a er negativ</strong> → linjen går nedad.</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 280 200" width="100%">
+          <line class="grid" x1="20" y1="40" x2="260" y2="40"/>
+          <line class="grid" x1="20" y1="80" x2="260" y2="80"/>
+          <line class="grid" x1="20" y1="120" x2="260" y2="120"/>
+          <line class="grid" x1="60" y1="20" x2="60" y2="180"/>
+          <line class="grid" x1="100" y1="20" x2="100" y2="180"/>
+          <line class="grid" x1="140" y1="20" x2="140" y2="180"/>
+          <line class="grid" x1="180" y1="20" x2="180" y2="180"/>
+          <line class="grid" x1="220" y1="20" x2="220" y2="180"/>
+          <line class="axis" x1="20" y1="160" x2="260" y2="160"/>
+          <line class="axis" x1="20" y1="20" x2="20" y2="180"/>
+          <line class="line" x1="20" y1="140" x2="260" y2="40"/>
+          <circle cx="20" cy="140" r="3" fill="var(--topic)"/>
+          <text x="6" y="135" class="lbl">b</text>
+          <text x="245" y="175" class="lbl">x</text>
+          <text x="6" y="30" class="lbl">y</text>
+          <text x="135" y="75" class="lbl-it">y = ax + b</text>
+        </svg>
+        <div class="figure-caption">a er linjens hældning. b er hvor linjen rammer y-aksen.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Find a og b -->
+  <div class="section">
+    <h2 class="section-title">Find a og b når du har to punkter</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Hvis du kender to punkter <span class="m">(x₁, y₁)</span> og <span class="m">(x₂, y₂)</span>:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">a = (y₂ − y₁) / (x₂ − x₁)</span></p>
+        <p>Når <span class="m">a</span> er fundet, beregnes <span class="m">b</span> ved at sætte ét punkt ind:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">b = y − a · x</span></p>
+        <div class="note"><span class="note-label">GeoGebra</span> Skriv punkterne som A = (2, 5) og B = (6, 13). Skriv så <em>Linje(A, B)</em>.</div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Punkter: <span class="m">(2, 5)</span> og <span class="m">(6, 13)</span>.</p>
+        <p class="step">Find a:</p>
+        <p class="formula-block"><span class="formula">a = (13 − 5) / (6 − 2)</span></p>
+        <p class="formula-block"><span class="formula">a = 8 / 4 = 2</span></p>
+        <p class="step">Find b ved at sætte (2, 5) ind:</p>
+        <p class="formula-block"><span class="formula">b = 5 − 2 · 2 = 1</span></p>
+        <p>Forskrift: <span class="m">y = 2x + 1</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eksponentiel -->
+  <div class="section">
+    <h2 class="section-title">Eksponentiel funktion: y = b · aˣ</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Bruges når noget vokser eller mindskes med <strong>samme procent</strong> hver gang. Forskriften er:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">y = b · aˣ</span></p>
+        <ul>
+          <li><span class="m">b</span> = <strong>startværdi</strong> (når x = 0)</li>
+          <li><span class="m">a</span> = <strong>fremskrivningsfaktor</strong></li>
+        </ul>
+        <p style="margin-top:8px"><strong>Vækst:</strong> a &gt; 1 (fx 5% vækst → a = 1,05)<br>
+        <strong>Aftagende:</strong> 0 &lt; a &lt; 1 (fx 5% fald → a = 0,95)</p>
+        <p style="margin-top:8px">Procent pr. gang:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">r = a − 1 (i decimaler). Procent = r · 100%</span></p>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Et beløb starter på <span class="n">2000 kr</span> og vokser med <span class="n">4%</span> om året.</p>
+        <p class="step">Find a og b:</p>
+        <p>b = 2000, a = 1,04</p>
+        <p class="formula-block"><span class="formula">y = 2000 · 1,04ˣ</span></p>
+        <p class="step">Efter 5 år:</p>
+        <p class="formula-block"><span class="formula">y = 2000 · 1,04⁵</span></p>
+        <p>y ≈ <span class="n">2433,31 kr</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aflæs på graf -->
+  <div class="section">
+    <h2 class="section-title">Aflæs en værdi på en graf</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Mange opgaver beder dig <em>aflæse</em> en værdi på en graf.</p>
+        <p><strong>Find y for en bestemt x:</strong></p>
+        <ol>
+          <li>Find x-værdien på x-aksen.</li>
+          <li>Gå <em>op</em> til linjen.</li>
+          <li>Gå <em>ud</em> til y-aksen: det er svaret.</li>
+        </ol>
+        <p><strong>Find x for en bestemt y:</strong> samme, men omvendt.</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 280 200" width="100%">
+          <line class="grid" x1="20" y1="40" x2="260" y2="40"/>
+          <line class="grid" x1="20" y1="80" x2="260" y2="80"/>
+          <line class="grid" x1="20" y1="120" x2="260" y2="120"/>
+          <line class="grid" x1="20" y1="160" x2="260" y2="160"/>
+          <line class="grid" x1="60" y1="20" x2="60" y2="180"/>
+          <line class="grid" x1="100" y1="20" x2="100" y2="180"/>
+          <line class="grid" x1="140" y1="20" x2="140" y2="180"/>
+          <line class="grid" x1="180" y1="20" x2="180" y2="180"/>
+          <line class="grid" x1="220" y1="20" x2="220" y2="180"/>
+          <line class="axis" x1="20" y1="160" x2="260" y2="160"/>
+          <line class="axis" x1="20" y1="20" x2="20" y2="180"/>
+          <line class="line" x1="20" y1="140" x2="260" y2="40"/>
+          <line x1="140" y1="160" x2="140" y2="90" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="20" y1="90" x2="140" y2="90" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4,4"/>
+          <circle cx="140" cy="90" r="4" fill="var(--topic)"/>
+          <text x="135" y="176" class="lbl">x = 3</text>
+          <text x="28" y="86" class="lbl">y = 7</text>
+          <text x="245" y="175" class="lbl">x</text>
+          <text x="6" y="30" class="lbl">y</text>
+        </svg>
+        <div class="figure-caption">Find x, gå op til grafen, gå ud til y-aksen.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 04: Funktioner</span>
+  </div>
+</section>
+</body>
+</html>

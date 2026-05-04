@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 02: Procent</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-procent); }
+
+  .topbar {
+    background: var(--ink); color: white; padding: 8px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11pt; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  /* Compact "the three moves" cards */
+  .core-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--col-gap);
+    margin: var(--s-3) 0 0;
+  }
+  .core-card {
+    border-top: 1.5pt solid var(--topic);
+    padding-top: 12px;
+  }
+  .core-card .label {
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .core-card .move {
+    font-size: 11pt;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .core-card .formula-mini {
+    font-family: var(--font-display);
+    font-style: italic;
+    background: var(--highlight);
+    padding: 4px 8px;
+    font-size: 12pt;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .core-card .ex {
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .core-card .ex strong {
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar no-print">
+  <span class="brand">Ark 02 · Procent</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">02</span>Ark</div>
+    <h1 class="sheet-title">Procent</h1>
+    <div class="sheet-subtitle">Procent af · rabat<br>moms · rente</div>
+  </header>
+
+  <!-- The three moves -->
+  <div class="section">
+    <h2 class="section-title">De tre du skal kunne</h2>
+    <div class="core-three">
+      <div class="core-card">
+        <div class="label">1 · Procent af et tal</div>
+        <div class="move">Hvor meget er X% af Y?</div>
+        <div class="formula-mini">X/100 · Y</div>
+        <div class="ex">25% af 800<br>= 0,25 · 800 = <strong>200</strong></div>
+      </div>
+      <div class="core-card">
+        <div class="label">2 · Hvad er procenten</div>
+        <div class="move">X er hvor mange % af Y?</div>
+        <div class="formula-mini">(X / Y) · 100</div>
+        <div class="ex">15 ud af 60<br>= 15/60 · 100 = <strong>25%</strong></div>
+      </div>
+      <div class="core-card">
+        <div class="label">3 · Find hele tallet</div>
+        <div class="move">X er Y% af hvad?</div>
+        <div class="formula-mini">X / (Y/100)</div>
+        <div class="ex">30 er 20% af<br>30 / 0,20 = <strong>150</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Increase/decrease -->
+  <div class="section">
+    <h2 class="section-title">Læg til eller træk fra</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <div class="method-label">Sådan gør du</div>
+        <p><strong>Læg X% til:</strong> gang med <span class="m">(1 + X/100)</span></p>
+        <p><strong>Træk X% fra:</strong> gang med <span class="m">(1 − X/100)</span></p>
+        <div class="note"><span class="note-label">Tip</span> 25% rabat = gang med 0,75. 25% moms = gang med 1,25.</div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel: rabat</div>
+        <p>En jakke koster <span class="n">600 kr</span>. Den får <span class="n">30%</span> rabat.</p>
+        <p class="step">Træk 30% fra → gang med 0,70:</p>
+        <p class="formula-block"><span class="formula">600 · 0,70 = 420</span></p>
+        <p>Ny pris: <span class="n">420 kr</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reverse -->
+  <div class="section">
+    <h2 class="section-title">Find prisen før</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Hvis du kender prisen <em>efter</em> en ændring, så <strong>dividér</strong> for at gå tilbage.</p>
+        <ul>
+          <li>Efter forhøjelse med X% → <span class="m">/ (1 + X/100)</span></li>
+          <li>Efter rabat med X% → <span class="m">/ (1 − X/100)</span></li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>En vare koster <span class="n">450 kr</span> efter <span class="n">25%</span> rabat. Hvad var prisen før?</p>
+        <p class="formula-block"><span class="formula">450 / 0,75 = 600</span></p>
+        <p>Før rabat: <span class="n">600 kr</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Renter / vækst -->
+  <div class="section">
+    <h2 class="section-title">Rente og vækst over flere år</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Når noget vokser med samme procent <em>hvert år</em>:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">K = K₀ · (1 + r)ⁿ</span></p>
+        <ul>
+          <li><span class="m">K₀</span> = startbeløb</li>
+          <li><span class="m">r</span> = rente som decimal (5% → 0,05)</li>
+          <li><span class="m">n</span> = antal år</li>
+          <li><span class="m">K</span> = beløb efter <span class="m">n</span> år</li>
+        </ul>
+        <div class="note"><span class="note-label">Sheets</span> Skriv med tal: <span class="m">=5000*(1+0,03)^4</span></div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p><span class="n">5000 kr.</span> i banken, <span class="n">3%</span> rente, i <span class="n">4</span> år.</p>
+        <p class="formula-block"><span class="formula">K = 5000 · (1,03)⁴</span></p>
+        <p>K ≈ <span class="n">5627,54 kr.</span></p>
+        <p class="step">Renten alene:<br>5627,54 − 5000 = <span class="n">627,54 kr.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Procent vs procentpoint -->
+  <div class="section">
+    <h2 class="section-title">Procent vs. procentpoint</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>De to ord er <strong>ikke</strong> det samme:</p>
+        <ul>
+          <li><strong>Procentpoint</strong> = forskellen mellem to procenter (træk fra).</li>
+          <li><strong>Procent</strong> = ændringen i forhold til det gamle tal (dividér med det gamle tal).</li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="example-label">Eksempel</div>
+        <p>Renten stiger fra <span class="n">4%</span> til <span class="n">6%</span>.</p>
+        <p>I <strong>procentpoint</strong>:<br>6 − 4 = <span class="n">2 procentpoint</span></p>
+        <p>I <strong>procent</strong>:<br>(2/4) · 100 = <span class="n">50%</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 02: Procent</span>
+  </div>
+</section>
+
+</body>
+</html>

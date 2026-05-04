@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Ark 07: Statistik</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/sheet.css">
+<style>
+  .sheet { --topic: var(--topic-statistik); }
+  .topbar { background: var(--ink); color: white; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11pt; position: sticky; top: 0; z-index: 10; }
+  .topbar a { color: white; text-decoration: none; border-bottom: 0.5pt solid rgba(255,255,255,0.4); }
+  .topbar .brand { font-family: var(--font-display); font-style: italic; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--col-gap);
+  }
+  .stat {
+    border-top: 1.5pt solid var(--topic);
+    padding-top: 12px;
+  }
+  .stat .label {
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .stat .name {
+    font-family: var(--font-display);
+    font-size: 13pt;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .stat .desc {
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .stat .sheets {
+    font-family: var(--font-display);
+    font-style: italic;
+    background: var(--paper-tint);
+    border-left: 2pt solid var(--topic);
+    padding: 4px 8px;
+    font-size: 8.8pt;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="topbar no-print">
+  <span class="brand">Ark 07 · Statistik</span>
+  <span><a href="../index.html">← Forside</a> &nbsp; <a href="javascript:window.print()">Print</a></span>
+</div>
+
+<section class="sheet">
+  <header class="sheet-header">
+    <div class="sheet-number"><span class="num">07</span>Ark</div>
+    <h1 class="sheet-title">Statistik</h1>
+    <div class="sheet-subtitle">Middel · median<br>kvartil · boksplot</div>
+  </header>
+
+  <!-- De tre tal -->
+  <div class="section">
+    <h2 class="section-title">De tre vigtige tal</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="label">Gennemsnit</div>
+        <div class="name">Middelværdi</div>
+        <div class="desc">Læg alle tal sammen. Dividér med antallet.</div>
+        <div class="sheets">=AVERAGE(A1:A10) / =GENNEMSNIT(A1:A10)</div>
+      </div>
+      <div class="stat">
+        <div class="label">Midten</div>
+        <div class="name">Median</div>
+        <div class="desc">Sortér tallene fra mindst til størst. Tag det midterste.</div>
+        <div class="sheets">=MEDIAN(A1:A10)</div>
+      </div>
+      <div class="stat">
+        <div class="label">Hyppigst</div>
+        <div class="name">Typetal</div>
+        <div class="desc">Det tal der forekommer flest gange.</div>
+        <div class="sheets">=MODE(A1:A10) / =HYPPIGST(A1:A10)</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:14px"><span class="note-label">Hvis lige antal</span> Når der er et lige antal tal, fx 8, er medianen gennemsnittet af de to midterste.</div>
+  </div>
+
+  <!-- Eksempel -->
+  <div class="section">
+    <h2 class="section-title">Eksempel: find middelværdi og median</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Du har tallene:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">3, 7, 2, 8, 5, 4, 7</span></p>
+        <p><strong>Middelværdi:</strong> læg sammen, dividér med 7.</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">(3+7+2+8+5+4+7) / 7 = 36 / 7 ≈ 5,14</span></p>
+        <p><strong>Median:</strong> sortér først:</p>
+        <p class="formula-block" style="text-align:left"><span class="formula">2, 3, 4, <strong>5</strong>, 7, 7, 8</span></p>
+        <p>Det midterste tal er <span class="m">5</span>. Median = 5.</p>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Med lige antal</div>
+        <p>Tallene: <span class="m">3, 5, 8, 12</span></p>
+        <p class="step">Sortér (allerede gjort).</p>
+        <p class="step">De to midterste: 5 og 8.</p>
+        <p class="formula-block"><span class="formula">Median = (5 + 8) / 2 = 6,5</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kvartiler -->
+  <div class="section">
+    <h2 class="section-title">Kvartiler: del talrækken i fire</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Når en talrække er sorteret, deler kvartilerne den i fire lige store dele.</p>
+        <ul>
+          <li><strong>Nedre kvartil (Q1):</strong> 25% af tallene er under.</li>
+          <li><strong>Median (Q2):</strong> midten: 50%.</li>
+          <li><strong>Øvre kvartil (Q3):</strong> 75% af tallene er under.</li>
+          <li><strong>Min</strong> = mindste tal. <strong>Max</strong> = største tal.</li>
+        </ul>
+        <div class="note"><span class="note-label">Tip</span> Brug Sheets eller GeoGebra. Det er lettere end at regne i hånden.</div>
+      </div>
+      <div class="example-box">
+        <div class="example-label">Sheets-formler</div>
+        <p>Min: <span class="m">=MIN(A1:A10)</span></p>
+        <p>Q1: <span class="m">=QUARTILE(A1:A10;1)</span> / <span class="m">=KVARTIL(A1:A10;1)</span></p>
+        <p>Median: <span class="m">=MEDIAN(A1:A10)</span></p>
+        <p>Q3: <span class="m">=QUARTILE(A1:A10;3)</span> / <span class="m">=KVARTIL(A1:A10;3)</span></p>
+        <p>Max: <span class="m">=MAX(A1:A10)</span> / <span class="m">=MAKS(A1:A10)</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boksplot -->
+  <div class="section">
+    <h2 class="section-title">Boksplot: sådan tegnes det</h2>
+    <div class="method-row aligned">
+      <div class="method">
+        <p>Et boksplot viser de fem tal på én linje:</p>
+        <p>Min · Q1 · Median · Q3 · Max</p>
+        <ol>
+          <li>Tegn en talakse.</li>
+          <li>Marker alle fem tal.</li>
+          <li>Tegn en kasse fra Q1 til Q3.</li>
+          <li>Streg lodret igennem kassen ved medianen.</li>
+          <li>Tegn "antenner" fra kassen ud til min og max.</li>
+        </ol>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 280 100" width="100%">
+          <line x1="20" y1="80" x2="260" y2="80" stroke="var(--ink-faint)" stroke-width="1"/>
+          <g font-family="Source Sans 3" font-size="9" fill="var(--ink-faint)">
+            <text x="20" y="95" text-anchor="middle">2</text>
+            <text x="80" y="95" text-anchor="middle">5</text>
+            <text x="140" y="95" text-anchor="middle">8</text>
+            <text x="200" y="95" text-anchor="middle">12</text>
+            <text x="260" y="95" text-anchor="middle">15</text>
+          </g>
+          <line x1="20" y1="75" x2="20" y2="85" stroke="var(--ink)" stroke-width="1.2"/>
+          <line x1="260" y1="75" x2="260" y2="85" stroke="var(--ink)" stroke-width="1.2"/>
+          <line x1="20" y1="40" x2="80" y2="40" stroke="var(--topic)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <line x1="200" y1="40" x2="260" y2="40" stroke="var(--topic)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <rect x="80" y="20" width="120" height="40" fill="none" stroke="var(--topic)" stroke-width="2"/>
+          <line x1="140" y1="20" x2="140" y2="60" stroke="var(--topic)" stroke-width="2.5"/>
+          <text x="20" y="14" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="10" fill="var(--ink)">min</text>
+          <text x="80" y="14" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="10" fill="var(--ink)">Q1</text>
+          <text x="140" y="14" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="10" fill="var(--ink)">median</text>
+          <text x="200" y="14" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="10" fill="var(--ink)">Q3</text>
+          <text x="260" y="14" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="10" fill="var(--ink)">max</text>
+        </svg>
+        <div class="figure-caption">Kassens bredde viser hvor de "midterste 50%" ligger.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span class="crumb">Cheat Sheets · 9. klasse · matematik</span>
+    <span>Ark 07: Statistik</span>
+  </div>
+</section>
+</body>
+</html>
